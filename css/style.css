@@ -6,3 +6,89 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* Perform a basic reset using Universal Selector(*) */
+* {
+    margin: 0;
+    padding: 0;
+    /* Changes the box model so that the borders and padding are not added to the total height or total width of the element */
+    box-sizing: border-box;
+}
+
+/* Every child of the body will inherit the properties specified here */
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    /* header will be 95% of the viewport height  */
+    height: 95vh;
+
+    /* We have 2 background image.  The first is linear-gradient and underneath is hero.jpg.  'to right' means that the gradient goes to the right bottom.  Move the opacity of the colors to 0.8 so that the hero.jpg image is visible */
+    background-image: linear-gradient(to right bottom,
+            #7ed56fbb,
+            #28b485c9),
+        url(../img/hero.jpg);
+
+    /* Cover - means that whatever the width of the viewport or the element, it will always try to fit the element inside the box  */
+    background-size: cover;
+
+    /* When you resize the window, the top of the image will stay the same and will not get cropped */
+    background-position: top;
+
+    /* need to set to relative because the child element (.logo-box) has the position: absolute */
+    position: relative;
+
+    /* makes the header into a polygon (values on each of the 4 corners) 
+    polygon(x y, x y, x y) - polygon(top-left, top-right, bottom-right, bottom-left) */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+/* since we are using position: absolute, we need to set the parent element of .logo-box which is .header to position: relative */
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    /* Only need to specify the height and the width will scale automatically  */
+    height: 35px;
+}
+
+.text-box {
+    /* We want this to be centered at all times.  Responsive.  */
+    position: absolute;
+
+    top: 40%;
+    left: 50%;
+
+    /* this will center (horizontally and vertically) the text-box in the middle of the screen  */
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+
+    /* spaces out the text so that it can be lined up with other elements  */
+    letter-spacing: 17.4px;
+}
