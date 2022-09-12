@@ -70,11 +70,18 @@ body {
 
     /* this will center (horizontally and vertically) the text-box in the middle of the screen  */
     transform: translate(-50%, -50%);
+
+    /* this will align the button to the center (including the button) */
+    text-align: center;
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+
+    /* this is a trick to fix the animation that is a little shakey.  No one knows why this happens but this will fix the issue. */
+    backface-visibility: hidden;
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -82,6 +89,15 @@ body {
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    /* animation-timing-function: ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end */
+    /* happens 3 times */
+    /* animation-iteration-count: 3; */
+    /* animation-delay: 3s; */
 }
 
 .heading-primary-sub {
@@ -91,4 +107,144 @@ body {
 
     /* spaces out the text so that it can be lined up with other elements  */
     letter-spacing: 17.4px;
+
+    /* short hand way of using animation. */
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateX(-100px);
+    }
+
+    /* This will rotate the element 180degrees
+    60% {
+        transform: rotate(180deg);
+    } */
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateY(30px);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* we want the btn visited to stay the same color and not change once we have clicked it */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+
+    /* the button is an inline element.  we change it to inline-block because we want to get on padding, height,width to elements */
+    display: inline-block;
+
+    border-radius: 100px;
+
+    /* shorthand way - will make the button take .2 seconds when clicked and unclicked  */
+    transition: all .2s;
+
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    /* 0 - X, 5px - Y, 10px - Blur of the shadow, rgba is BLACK with and OPACITY of 0.2 (20%) */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+/* ACTIVE means when we click the button */
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+/* AFTER psuedo element is treated as a child of the button  */
+.btn::after {
+    /* CONTENT is ALWAYS needed in order for the psuedo after element to appear */
+    content: "";
+
+    /* set the display to inline-block because the button is also an inline-block  */
+    display: inline-block;
+
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+
+    /* position absolute here and set the position relative in the .btn:link, .btn:visited */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* places the element behind the button  */
+    z-index: -1;
+
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+/* AFTER psuedo element only when the button is hovered  */
+.btn:hover::after {
+    /* increases the size of the button  */
+    transform: scaleX(1.4) scaleY(1.6);
+
+    /* fade's out the animation where the scale is not seen after hovering */
+    opacity: 0;
+}
+
+.btn-animated {
+    /* .75s is the delay */
+    animation: moveInBottom .5s ease-out .75s;
+
+    /* will be not visible at first, then will be visible  */
+    animation-fill-mode: backwards;
 }
