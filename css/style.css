@@ -15,14 +15,24 @@ Dark green: #28b485
     box-sizing: border-box;
 }
 
+/* Setting the ROOT FONT SIZE */
+html {
+    /* 1 rem = 10px.  If we set the root font-size to 10px, the user will not be able to change their font-size.  This is a problem if they have bad eyesight and want to make the text bigger.    
+    font-size: 10px;
+    */
+
+    /* The default font size of our browser is 16px.  We want to set it to 10px.  10 / 16 = 0.625 which is 62.5% */
+    font-size: 62.5%;
+}
+
 /* Every child of the body will inherit the properties specified here */
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
 }
 
 .header {
@@ -52,13 +62,13 @@ body {
 /* since we are using position: absolute, we need to set the parent element of .logo-box which is .header to position: relative */
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
     /* Only need to specify the height and the width will scale automatically  */
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -81,14 +91,14 @@ body {
 
     /* this is a trick to fix the animation that is a little shakey.  No one knows why this happens but this will fix the issue. */
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -102,11 +112,11 @@ body {
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
 
     /* spaces out the text so that it can be lined up with other elements  */
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     /* short hand way of using animation. */
     animation: moveInRight 1s ease-out;
@@ -117,7 +127,7 @@ body {
         /* 0% means that it will be in the background */
         opacity: 0;
         /* it will start from the left */
-        transform: translateX(-100px);
+        transform: translateX(-100rem);
     }
 
     /* This will rotate the element 180degrees
@@ -126,7 +136,7 @@ body {
     } */
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100% {
@@ -141,11 +151,11 @@ body {
         /* 0% means that it will be in the background */
         opacity: 0;
         /* it will start from the left */
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100% {
@@ -160,7 +170,7 @@ body {
         /* 0% means that it will be in the background */
         opacity: 0;
         /* it will start from the left */
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100% {
@@ -175,29 +185,31 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
 
     /* the button is an inline element.  we change it to inline-block because we want to get on padding, height,width to elements */
     display: inline-block;
 
-    border-radius: 100px;
+    border-radius: 10rem;
 
     /* shorthand way - will make the button take .2 seconds when clicked and unclicked  */
     transition: all .2s;
 
     position: relative;
+    font-size: 1.6rem;
 }
 
 .btn:hover {
     transform: translateY(-3px);
 
     /* 0 - X, 5px - Y, 10px - Blur of the shadow, rgba is BLACK with and OPACITY of 0.2 (20%) */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
 /* ACTIVE means when we click the button */
 .btn:active {
     transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
@@ -215,7 +227,7 @@ body {
 
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
 
     /* position absolute here and set the position relative in the .btn:link, .btn:visited */
     position: absolute;
