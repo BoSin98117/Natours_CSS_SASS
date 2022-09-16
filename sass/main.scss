@@ -2,6 +2,8 @@ $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
 
+$color-grey-dark: #777;
+$color-white: #fff;
 
 /* Perform a basic reset using Universal Selector(*) - Global Reset.  We also want to include the AFTER and BEFORE psuedo elements so they can get the properties as well. */
 *,
@@ -30,7 +32,7 @@ body {
     font-weight: 400;
     /* font-size: 16px; */
     line-height: 1.7;
-    color: #777;
+    color: $color-grey-dark;
     padding: 3rem;
 
     /* Changes the box model so that the borders and padding are not added to the total height or total width of the element */
@@ -88,7 +90,7 @@ body {
 }
 
 .heading-primary {
-    color: #fff;
+    color: $color-white;
     text-transform: uppercase;
 
     /* this is a trick to fix the animation that is a little shakey.  No one knows why this happens but this will fix the issue. */
@@ -215,8 +217,8 @@ body {
 }
 
 .btn--white {
-    background-color: #fff;
-    color: #777;
+    background-color: $color-white;
+    color: $color-grey-dark;
 }
 
 /* AFTER psuedo element is treated as a child of the button  */
@@ -243,7 +245,7 @@ body {
 }
 
 .btn--white::after {
-    background-color: #fff;
+    background-color: $color-white;
 }
 
 /* AFTER psuedo element only when the button is hovered  */
