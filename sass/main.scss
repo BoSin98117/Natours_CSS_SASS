@@ -1,0 +1,264 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+
+/* Perform a basic reset using Universal Selector(*) - Global Reset.  We also want to include the AFTER and BEFORE psuedo elements so they can get the properties as well. */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+
+    /* The BODY will have box-sizing: border-box.  By setting it to INHERIT here, this means that every child of the BODY will inherit the value of box-sizing */
+    box-sizing: inherit;
+}
+
+/* Setting the ROOT FONT SIZE */
+html {
+    /* 1 rem = 10px.  If we set the root font-size to 10px, the user will not be able to change their font-size.  This is a problem if they have bad eyesight and want to make the text bigger.    
+    font-size: 10px;
+    */
+
+    /* The default font size of our browser is 16px.  We want to set it to 10px.  10 / 16 = 0.625 which is 62.5% */
+    font-size: 62.5%;
+}
+
+/* Every child of the body will inherit the properties specified here */
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: #777;
+    padding: 3rem;
+
+    /* Changes the box model so that the borders and padding are not added to the total height or total width of the element */
+    box-sizing: border-box;
+}
+
+.header {
+    /* header will be 95% of the viewport height  */
+    height: 95vh;
+
+    /* We have 2 background image.  The first is linear-gradient and underneath is hero.jpg.  'to right' means that the gradient goes to the right bottom.  Move the opacity of the colors to 0.8 so that the hero.jpg image is visible */
+    background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg);
+
+    /* Cover - means that whatever the width of the viewport or the element, it will always try to fit the element inside the box  */
+    background-size: cover;
+
+    /* When you resize the window, the top of the image will stay the same and will not get cropped */
+    background-position: top;
+
+    /* need to set to relative because the child element (.logo-box) has the position: absolute */
+    position: relative;
+
+    /* makes the header into a polygon (values on each of the 4 corners) 
+    polygon(x y, x y, x y) - polygon(top-left, top-right, bottom-right, bottom-left) */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+/* since we are using position: absolute, we need to set the parent element of .logo-box which is .header to position: relative */
+.header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+}
+
+.header__logo {
+    /* Only need to specify the height and the width will scale automatically  */
+    height: 3.5rem;
+}
+
+.header__text-box {
+    /* We want this to be centered at all times.  Responsive.  */
+    position: absolute;
+
+    top: 40%;
+    left: 50%;
+
+    /* this will center (horizontally and vertically) the text-box in the middle of the screen  */
+    transform: translate(-50%, -50%);
+
+    /* this will align the button to the center (including the button) */
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+
+    /* this is a trick to fix the animation that is a little shakey.  No one knows why this happens but this will fix the issue. */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    /* animation-timing-function: ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end */
+    /* happens 3 times */
+    /* animation-iteration-count: 3; */
+    /* animation-delay: 3s; */
+}
+
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+
+    /* spaces out the text so that it can be lined up with other elements  */
+    letter-spacing: 1.75rem;
+
+    /* short hand way of using animation. */
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateX(-100rem);
+    }
+
+    /* This will rotate the element 180degrees
+    60% {
+        transform: rotate(180deg);
+    } */
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateY(3rem);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* we want the btn visited to stay the same color and not change once we have clicked it */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+
+    /* the button is an inline element.  we change it to inline-block because we want to get on padding, height,width to elements */
+    display: inline-block;
+
+    border-radius: 10rem;
+
+    /* shorthand way - will make the button take .2 seconds when clicked and unclicked  */
+    transition: all .2s;
+
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+
+    /* 0 - X, 5px - Y, 10px - Blur of the shadow, rgba is BLACK with and OPACITY of 0.2 (20%) */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
+
+/* ACTIVE means when we click the button */
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
+
+.btn--white {
+    background-color: #fff;
+    color: #777;
+}
+
+/* AFTER psuedo element is treated as a child of the button  */
+.btn::after {
+    /* CONTENT is ALWAYS needed in order for the psuedo after element to appear */
+    content: "";
+
+    /* set the display to inline-block because the button is also an inline-block  */
+    display: inline-block;
+
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+
+    /* position absolute here and set the position relative in the .btn:link, .btn:visited */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* places the element behind the button  */
+    z-index: -1;
+
+    transition: all .4s;
+}
+
+.btn--white::after {
+    background-color: #fff;
+}
+
+/* AFTER psuedo element only when the button is hovered  */
+.btn:hover::after {
+    /* increases the size of the button  */
+    transform: scaleX(1.4) scaleY(1.6);
+
+    /* fades out the animation where the scale is not seen after hovering */
+    opacity: 0;
+}
+
+.btn--animated {
+    /* .75s is the delay */
+    animation: moveInBottom .5s ease-out .75s;
+
+    /* will be not visible at first, then will be visible  */
+    animation-fill-mode: backwards;
+}
