@@ -1,0 +1,57 @@
+@keyframes moveInLeft {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateX(-100rem);
+    }
+
+    /* This will rotate the element 180degrees
+    60% {
+        transform: rotate(180deg);
+    } */
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        /* 0% means that it will be in the background */
+        opacity: 0;
+        /* it will start from the left */
+        transform: translateY(3rem);
+    }
+
+    100% {
+        /* 100% means it will be fully displayed */
+        opacity: 1;
+        transform: translate(0);
+    }
+}

@@ -1,0 +1,49 @@
+.header {
+    /* header will be 95% of the viewport height  */
+    height: 95vh;
+
+    /* We have 2 background image.  The first is linear-gradient and underneath is hero.jpg.  'to right' means that the gradient goes to the right bottom.  Move the opacity of the colors to 0.8 so that the hero.jpg image is visible */
+    background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg);
+
+    /* Cover - means that whatever the width of the viewport or the element, it will always try to fit the element inside the box  */
+    background-size: cover;
+
+    /* When you resize the window, the top of the image will stay the same and will not get cropped */
+    background-position: top;
+
+    /* need to set to relative because the child element (.logo-box) has the position: absolute */
+    position: relative;
+
+    /* makes the header into a polygon (values on each of the 4 corners) 
+    polygon(x y, x y, x y) - polygon(top-left, top-right, bottom-right, bottom-left) */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    /* since we are using position: absolute, we need to set the parent element of .logo-box which is .header to position: relative */
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        /* Only need to specify the height and the width will scale automatically  */
+        height: 3.5rem;
+    }
+    
+    &__text-box {
+        /* We want this to be centered at all times.  Responsive.  */
+        position: absolute;
+    
+        top: 40%;
+        left: 50%;
+    
+        /* this will center (horizontally and vertically) the text-box in the middle of the screen  */
+        transform: translate(-50%, -50%);
+    
+        /* this will align the button to the center (including the button) */
+        text-align: center;
+    }
+}

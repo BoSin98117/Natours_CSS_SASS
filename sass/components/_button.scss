@@ -1,0 +1,82 @@
+.btn {
+    /* we want the btn visited to stay the same color and not change once we have clicked it */
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+
+        /* the button is an inline element.  we change it to inline-block because we want to get on padding, height,width to elements */
+        display: inline-block;
+
+        border-radius: 10rem;
+
+        /* shorthand way - will make the button take .2 seconds when clicked and unclicked  */
+        transition: all .2s;
+
+        position: relative;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+
+        /* 0 - X, 5px - Y, 10px - Blur of the shadow, rgba is BLACK with and OPACITY of 0.2 (20%) */
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        /* AFTER psuedo element only when the button is hovered  */
+        &::after {
+        /* increases the size of the button  */
+        transform: scaleX(1.4) scaleY(1.6);
+
+        /* fades out the animation where the scale is not seen after hovering */
+        opacity: 0;
+    }
+    }
+
+    /* ACTIVE means when we click the button */
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    /* AFTER psuedo element is treated as a child of the button  */
+    &::after {
+        /* CONTENT is ALWAYS needed in order for the psuedo after element to appear */
+        content: "";
+
+        /* set the display to inline-block because the button is also an inline-block  */
+        display: inline-block;
+
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+
+        /* position absolute here and set the position relative in the &:link, &:visited */
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        /* places the element behind the button  */
+        z-index: -1;
+
+        transition: all .4s;
+    }
+
+    &--animated {
+        /* .75s is the delay */
+        animation: moveInBottom .5s ease-out .75s;
+
+        /* will be not visible at first, then will be visible  */
+        animation-fill-mode: backwards;
+    }
+}
