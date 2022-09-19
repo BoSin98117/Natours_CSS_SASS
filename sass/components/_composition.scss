@@ -1,0 +1,48 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        // border-radius: 2px;
+        position: absolute;
+        
+        /* set this to a number.  Set the :hover z-index to a value higher than this value so that it will be on top */
+        z-index: 10;
+
+        /* for the animations, we transition ALL for .2seconds */
+        transition: all .2s;
+
+        /* Will create a space between the border outline and the image */
+        outline-offset: 2rem;
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary;
+
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            /* z-index here is set to a higher value than the one set in the &__photo so that it will be on top when hovered. */
+            z-index: 20;
+        }
+    }
+
+    /* makes the images that are NOT HOVERED shrink in size - scale(.9) */
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+}

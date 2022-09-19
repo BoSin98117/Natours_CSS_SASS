@@ -116,6 +116,28 @@ body {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
 .section-about {
   background-color: #f7f7f7;
   padding: 25em 0;
@@ -175,9 +197,60 @@ body {
     /* will be not visible at first, then will be visible  */
     animation-fill-mode: backwards; }
 
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  /* display: inline-block so that we can use the box model properties such as padding, margin, etc. */
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  /* we want the trasform property in &:hover to be animated */
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0px); }
+
+.composition {
+  position: relative;
+  /* makes the images that are NOT HOVERED shrink in size - scale(.9) */ }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    position: absolute;
+    /* set this to a number.  Set the :hover z-index to a value higher than this value so that it will be on top */
+    z-index: 10;
+    /* for the animations, we transition ALL for .2seconds */
+    transition: all .2s;
+    /* Will create a space between the border outline and the image */
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      /* z-index here is set to a higher value than the one set in the &__photo so that it will be on top when hovered. */
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
 .row {
   max-width: 114rem;
-  background-color: #eee;
   /* Center the row in the viewport.  This will center a block element inside of another block element.  Here '0' is for the top and bottom margin and left and right is AUTO.  Setting it to AUTO means that the browser will automatically calculate the left and right margin which will result in the element being CENTERED. */
   margin: 0 auto;
   /* We want the last div to not have a margin-bottom. Use the :not() psuedo operator. :not(:last-child) means that we select everything except the last child.  This means that all other elements will have a margin-bottom except the last child. */
@@ -193,7 +266,6 @@ body {
     /* BOTH = it will clear float: left and float:right */
     clear: both; }
   .row [class^="col-"] {
-    background-color: orangered;
     float: left;
     /* Every element except the last-child will have a margin-right */ }
     .row [class^="col-"]:not(:last-child) {

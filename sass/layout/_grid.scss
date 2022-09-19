@@ -1,6 +1,5 @@
 .row {
     max-width: $grid-width;
-    background-color: #eee;
     
     /* Center the row in the viewport.  This will center a block element inside of another block element.  Here '0' is for the top and bottom margin and left and right is AUTO.  Setting it to AUTO means that the browser will automatically calculate the left and right margin which will result in the element being CENTERED. */
     margin: 0 auto;
@@ -17,7 +16,6 @@
     * - select any CLASS that contains COL-
     $ - select all CLASS that ends with COL- */
     [class^="col-"] {
-        background-color: orangered;
         float: left;
 
         /* Every element except the last-child will have a margin-right */
