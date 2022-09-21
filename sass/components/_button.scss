@@ -49,6 +49,15 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     /* AFTER psuedo element is treated as a child of the button  */
     &::after {
         /* CONTENT is ALWAYS needed in order for the psuedo after element to appear */

@@ -19,6 +19,7 @@
 
     /* makes the header into a polygon (values on each of the 4 corners) 
     polygon(x y, x y, x y) - polygon(top-left, top-right, bottom-right, bottom-left) */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
     /* since we are using position: absolute, we need to set the parent element of .logo-box which is .header to position: relative */
