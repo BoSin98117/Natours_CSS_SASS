@@ -1,0 +1,76 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    // '>' - direct child, '*' - everything.  '>*' every direct child.  However, this is not going to work.  We need to add 'skewX(12deg)' manually to '&__shape - transform: translateX(-3rem) skewX(12deg)' AND '&__text - transform: skewX(12deg)'
+    // & > * {
+    //     transform: skewX(12deg);
+    // }
+
+    &__shape {
+        width: 15rem ;
+        height: 15rem;
+        float: left;
+
+        // to work in Chrome and all browsers
+        -webkit-shape-outside: circle(50% at 50% 50%);
+
+        // The center.  Element needs to be floated and have the same dimensions (width and height) for this to work.
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        // Need to add 'skewX(12deg)' here as well to get the image to skew correctly. 
+        transform: translateX(-3rem) skewX(12deg);
+
+        position: relative;
+    }
+
+    &__img {
+        // The image is in the &__shape.  &__shape has a height of 15rem.  We make the height here 100% to occupy the entire height of 15rem in the &__shape.
+        height: 100%;
+
+        // makes the image in the center of the circular window
+        transform: translateX(-4rem) scale(1.4);
+
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+
+    // Just adding 'transform: skewX(12deg)' is not enough.  We need to add 'skewX(12deg)' in the '&__shape' - 'transform: translateX(-3rem) skew>(12deg)' as well.
+    &__text {
+        transform: skewX(12deg);
+    }
+
+    &__caption {
+        // Center the caption in the image.  We need to set the &__shape to 'position: relative'
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%)
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}

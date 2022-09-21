@@ -1,0 +1,23 @@
+.bg-video {
+    // Need to set the parent element 'section-stories' to 'position: relative'
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    z-index: -1;
+    opacity: .15;
+
+    // When something overflows our element, use overflow: hidden
+    overflow: hidden;
+
+    &__content {
+        height: 100%;
+        width: 100%;
+
+        // Height and Width = 100% is not enough.  We need to declare 'object-fit: cover' in order to fill the entire section.  This will allow the video to fill the entire content while retaining it's aspect ratio. Object-fit works with HTML elements (images & videos)
+        object-fit: cover;
+    }
+}

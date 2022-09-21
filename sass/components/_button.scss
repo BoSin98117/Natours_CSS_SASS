@@ -1,4 +1,7 @@
 .btn {
+    // our button does not get these properties.  This only works with our anchor tags for &:link and &:visited.  We need to specify '&' to also apply properties to the <button> 
+    &,
+
     /* we want the btn visited to stay the same color and not change once we have clicked it */
     &:link,
     &:visited {
@@ -16,6 +19,10 @@
 
         position: relative;
         font-size: $default-font-size;
+
+        // Change for the <button> element.  
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -35,7 +42,9 @@
     }
 
     /* ACTIVE means when we click the button */
-    &:active {
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }

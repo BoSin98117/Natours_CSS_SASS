@@ -10,11 +10,13 @@
 
 @import "pages/home";
 
+@import "components/bg-video";
 @import "components/button";
 @import "components/card";
 @import "components/composition";
 @import "components/feature-box";
-@import "components/story.scss";
+@import "components/form";
+@import "components/story";
 
 @import "layout/grid";
 @import "layout/header";
