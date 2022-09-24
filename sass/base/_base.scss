@@ -17,10 +17,44 @@ html {
 
     /* The default font size of our browser is 16px.  We want to set it to 10px.  10 / 16 = 0.625 which is 62.5% */
     font-size: 62.5%;
+
+
+
+    // Media Query for device resolution
+
+    // Do not need this because the tab-port asks if the width < 900.  RESPOND(phone) asks if the width < 600 which is less than 900 so we don't need to delclare this.  
+    // @include respond(phone) {
+        // font-size: 50%;
+    // }
+
+    @include respond(tab-land) { // width < 1200?
+        // font-size: 70%; // 1 rem = 10px
+        font-size: 56.25%; // if we want 1rem = 9px, 9/16 = 56.25%
+    }
+
+    @include respond(tab-port) {    // width < 900?
+        // font-size: 60%; // 1 rem = 10px
+        font-size: 50%; // if we want 1rem = 8px, 8/16 = 50%
+    }
+
+    @include respond(big-desktop) {
+        // font-size: 80%; // 1 rem = 10px
+        font-size: 75%; // if we want 1rem = 12px, 12/16 = 750%
+    }
 }
 
 /* Every child of the body will inherit the properties specified here */
 body {
     /* Changes the box model so that the borders and padding are not added to the total height or total width of the element */
     box-sizing: border-box;
+
+    padding: 3rem;
+
+    // When the screen resolution < 900, padding = 0
+    @include respond(tab-port) {
+        padding: 0;
+    }
 }
+
+
+
