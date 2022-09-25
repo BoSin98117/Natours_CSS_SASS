@@ -82,18 +82,19 @@
                         <div class="composition">
                             <!-- RESOLUTIN SWITCHING - WIDTH DESCRIPTOR = 300w, 1000w.  SIZES used to inform browser of different viewport widths.  sizes="(max-width: 900px) 20vw" means that at 900px, make the image take up 20vw(which is 20%) of the viewport width.  If there is no match, our DEFAULT SIZE is 300px.  
                             To calculate the 20vw, go inspect in browser, set the width of page to 900px, right-click on image and click'inspect'.  Take the width of image and divide by 900 to get the % needed for the WIDTH DESCRIPTOR. -->
+                            <!-- Convert px to em - 600px / 16 = 37.5em  -  900px / 16 = 56.25em -->
                             <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w" 
-                                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" 
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" 
                                 alt="Photo 1" 
                                 class="composition__photo composition__photo--p1">
 
                             <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w" 
-                                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" 
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" 
                                 alt="Photo 2" 
                                 class="composition__photo composition__photo--p2">
 
                             <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w" 
-                                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" 
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" 
                                 alt="Photo 3" 
                                 class="composition__photo composition__photo--p3">
 

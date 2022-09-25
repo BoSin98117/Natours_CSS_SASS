@@ -796,7 +796,7 @@ body {
   /* header will be 95% of the viewport height  */
   height: 95vh;
   /* We have 2 background image.  The first is linear-gradient and underneath is hero.jpg.  'to right' means that the gradient goes to the right bottom.  Move the opacity of the colors to 0.8 so that the hero.jpg image is visible */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   /* Cover - means that whatever the width of the viewport or the element, it will always try to fit the element inside the box  */
   background-size: cover;
   /* When you resize the window, the top of the image will stay the same and will not get cropped */
@@ -808,6 +808,9 @@ body {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   /* since we are using position: absolute, we need to set the parent element of .logo-box which is .header to position: relative */ }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.8), rgba(255, 119, 48, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);

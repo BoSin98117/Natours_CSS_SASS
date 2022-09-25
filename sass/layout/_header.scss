@@ -6,7 +6,7 @@
     background-image: linear-gradient(to right bottom,
             rgba($color-primary-light, 0.8),
             rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
 
     /* Cover - means that whatever the width of the viewport or the element, it will always try to fit the element inside the box  */
     background-size: cover;
@@ -21,6 +21,16 @@
     polygon(x y, x y, x y) - polygon(top-left, top-right, bottom-right, bottom-left) */
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    // RESPONSIVE IMAGES CSS.  This is for high resolution screens > 192dpi
+    // hero.jpg is shown when (min-resolution: 192dpi) AND (min-width: 37.5em), OR (mind-width: 125em)
+    // Convert px to em - 600px / 16 = 37.5em  -  2000px / 16 = 125em
+    @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+        background-image: linear-gradient(to right bottom,
+            rgba($color-secondary-light, 0.8),
+            rgba($color-secondary-dark, 0.8)),
+        url(../img/hero.jpg);
+    }
 
     @include respond(phone) {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
